@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>Items</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div th:replace="~{fragments/headerCommitteeMember.html :: header}"></div>
+    <div th:if="${successMessage}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <span th:text="${successMessage}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <span th:text="${errorMessage}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <h1 class="text-center">Items - Committee Member</h1>
+
+    <div class="mx-3 d-flex">
+        <h1 class="flex-fill">Instruments</h1>
+        <div class="align-self-center">
+            <a class="btn btn-outline-dark btn-lg" th:href="@{/committee-member/instrument/new}">Add Instrument</a>
+        </div>
+    </div>
+
+    <div class="table-responsive p-5">
+        <table class="table table-secondary table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Serial Number</th>
+                <th scope="col">Make</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tr class="table-light" th:each="instrument : ${instruments}">
+                <th scope="col">
+                    <a th:href="@{instrument/{id}(id=${instrument.id})}" th:text="${instrument.id}">1</a>
+                </th>
+                <td th:text="${instrument.name}"></td>
+                <td th:text="${instrument.serialNumber}"></td>
+                <td th:text="${instrument.make}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="mx-3 d-flex">
+        <h1 class="flex-fill">Miscellaneous Items</h1>
+        <div class="align-self-center">
+            <a class="btn btn-outline-dark btn-lg" th:href="@{/committee-member/miscellaneous/new}">Add Miscellaneous Item</a>
+        </div>
+    </div>
+
+    <div class="table-responsive p-5">
+        <table class="table table-secondary table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Make</th>
+                <th scope="col">Specific For Instrument</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tr class="table-light" th:each="miscellaneous : ${miscellaneousItems}">
+                <th scope="col">
+                    <a th:href="@{miscellaneous/{id}(id=${miscellaneous.id})}" th:text="${miscellaneous.id}">1</a>
+                </th>
+                <td th:text="${miscellaneous.name}"></td>
+                <td th:text="${miscellaneous.quantity}"></td>
+                <td th:text="${miscellaneous.make}"></td>
+                <td th:text="${miscellaneous.specificForInstrument}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div th:replace="~{fragments/footer.html :: footer}"></div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>

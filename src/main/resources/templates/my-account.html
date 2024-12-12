@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>My Account</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/accountform.css">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<div class="main-body mt-5">
+
+    <div class="myAccountForm">
+        <h1>My Account</h1>
+        <p><strong>Name: </strong><span th:text="${user.fullName}"></span> </p>
+        <form id="updateAccountForm" class="mb-4">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" th:value="${user.email}"
+                       class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" th:value="${user.phoneNumber}"
+                       class="form-control" required>
+            </div>
+
+            <button type="button" id="updateAccountButton" class="btn btn-primary"
+                    th:data-id="${user.id}" th:data-name="${user.fullName}"
+            th:data-password="${user.password}">Update Account</button>
+        </form>
+        <a class="btn btn-primary" href="/performance">Back to Performances</a>
+    </div>
+
+
+    <form th:action="@{/logout}" method="post" class="d-flex justify-content-center mt-3">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <button type="submit" class="logout btn btn-success me-2">Sign Out</button>
+    </form>
+
+</div>
+
+
+
+<div th:replace="~{fragments/footer.html :: footer}"></div>
+<script th:src="@{/js/account.js}"></script>
+</body>
+</html>
