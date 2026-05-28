@@ -1,89 +1,63 @@
+# Sludgate Brass Band — Band Resource Management System
 
-# Sludgate Brass Band
+A full-stack web application for managing a community brass band's members, 
+instrument loans, music library, and performances. Built as a 6-person 
+university team project (Team 20).
 
-Team 20 Group Project
+## Tech Stack
 
-## Table of Contents
-- [Run Locally](#run-locally)
-- [Running Tests](#running-tests)
-- [Setting Up](#setting-up)
-- [Support](#support)
-- [Authors](#authors)
+- **Backend:** Java, Spring Boot, Spring Security, Spring Data JPA
+- **Database:** MySQL
+- **Build:** Gradle
+- **Testing:** JUnit
+- **Frontend:** Thymeleaf, HTML/CSS, JavaScript
 
-## Run Locally
+## Features
 
-Go to the project directory
+- Role-based access control across five user roles (director, committee 
+  member, member, parent, child) using Spring Security
+- Member and band management (senior and training bands)
+- Instrument and miscellaneous item loan tracking
+- Music library and performance management
+- Secure authentication with BCrypt password hashing
 
+## My Contribution
+
+This was a 6-person team project. My contribution focused on the 
+item-management subsystem:
+
+- Built the controllers and service classes handling instrument and 
+  miscellaneous loan items
+- Modified the `User` and `Item` domain models to support item relationships
+- Refactored the codebase by removing superseded controller, service, and 
+  repository classes, and added documentation across model and controller classes
+
+## Running Locally
+
+Prerequisites: Java, Gradle, and a MySQL instance.
+
+1. Configure your database connection in `application.properties` 
+   (use your own MySQL credentials).
+2. Start the server:
 ```bash
-  cd <the-project>
+   gradle bootRun
 ```
+3. Open the application at http://localhost:8080/login
 
-Start the server
-
-```bash
-  gradle bootRun
-```
-
-Open the application in the browser at [http://localhost:8080/login](http://localhost:8080/login)
-
-
-To terminate the application, use the following command in the terminal
-```
-  Ctrl + c 
-```
-When prompted for confirmation, enter `Y`.
 ## Running Tests
 
-Run tests with the following command
-
 ```bash
-  gradle clean test -info
+gradle clean test -info
 ```
 
-After running the tests, navigate to the test result directory
-
-```
-  cd build/result/tests/test
-```
-
-Open the `index.html` file to view the test results.
-## Setting Up
-
-### Adding the Director to the Database ###
-- Start the server.
-- Register as a normal user.
-- Open the MySQL console and execute the following command to assign the "DIRECTOR" role to the user you just registered.
-  
-  ```mysql
-    INSERT INTO user_roles (user_id, roles) VALUES (1, DIRECTOR);
-  ```
-
-### Adding Bands to the Database ###
-- Open the MySQL console.
-- Execute the following commands to add bands to the database.
-
-  ```mysql
-    INSERT INTO bands (id, name) VALUES (1, 'Senior');
-    INSERT INTO bands (id, name) VALUES (2, 'Training');
-  ```
-## Support
-
-***Please use the existing database if the new database doesn't work.***
-
-
-The database is pre-configured with the director account and the two bands.
-
-Pre-Configured Director: 
-
-- Email : director@director.com
-- Password : director
+Test results are generated in `build/reports/tests/test` — open `index.html` to view them.
 
 ## Authors
 
+Team 20:
 - Michael Udo
 - Edward Beavis
 - Juin Kai Lim
 - Kingsley Sherwood
 - Roshan Virdee
 - Sau Yip
-
