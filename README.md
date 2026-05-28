@@ -70,11 +70,6 @@ Open the `index.html` file to view the test results.
 
 ***Please use the existing database if the new database doesn't work.***
 
-Credentials:
-
-- Datasource URL : jdbc:mysql://stusql.dcs.shef.ac.uk/team020
-- Username : team020
-- Password : Yoh1nae2e
 
 The database is pre-configured with the director account and the two bands.
 
@@ -86,4 +81,9 @@ Pre-Configured Director:
 ## Authors
 
 - Michael Udo
+- Edward Beavis
+- Juin Kai Lim
+- Kingsley Sherwood
+- Roshan Virdee
+- Sau Yip
 
