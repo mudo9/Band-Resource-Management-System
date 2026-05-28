@@ -85,5 +85,5 @@ Pre-Configured Director:
 
 ## Authors
 
-- Juin Kai Lim
+- Michael Udo
 
